@@ -21,6 +21,8 @@ module PizzaSupremeLightningTalk
     # Initialize configuration defaults for originally generated Rails version.
     config.load_defaults 5.1
 
+    # be lazy don't generate tests
+    config.generators.test_framework false
     # Settings in config/environments/* take precedence over those specified here.
     # Application configuration should go into files in config/initializers
     # -- all .rb files in that directory are automatically loaded.
