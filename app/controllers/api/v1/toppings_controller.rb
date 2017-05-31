@@ -11,6 +11,7 @@ module Api
 
       def create
         topp = Topping.new topping_params
+        topp.roles_mask = 0b10 if vip_flag[:vip] == 'true'
         if topp.save
           render json: {success: 'yeah success'}
         else
@@ -34,6 +35,10 @@ module Api
 
       def user_id
         params.permit(:id)
+      end
+
+      def vip_flag
+        params.permit(:vip)
       end
 
     end
