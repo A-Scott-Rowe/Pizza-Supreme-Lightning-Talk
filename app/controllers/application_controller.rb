@@ -1,4 +1,6 @@
 class ApplicationController < ActionController::API
+  include CanCan::ControllerAdditions
+
   before_action :set_default_type
 
   private

@@ -12,6 +12,7 @@ class Topping < ApplicationRecord
   private
 
   def set_role
-    roles << :premium if extra_cost != 0 || extra_cost.nil?
+    roles << :premium unless extra_cost.zero? || extra_cost.nil?
   end
 end
+›

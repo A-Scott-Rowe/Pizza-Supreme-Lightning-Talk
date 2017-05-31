@@ -2,10 +2,12 @@ module Api
   module V1
     class ToppingsController < ApplicationController
 
+      load_and_authorize_resource only: :index
+
       before_action :user_admin?, only: [:create]
+      before_action :user_authenticated?, only: :index
 
       def index
-        @toppings = Topping.all
         render json: @toppings
       end
 
@@ -22,11 +24,22 @@ module Api
       private
 
       def user_admin?
-        user = User.find_by_id user_id[:id]
+        user = current_user
         if !user || !user.is?(:admin)
-          render json: {error: 'ya bozo'}, status: 403
+          bozo_message
           return
         end
+      end
+
+      def user_authenticated?
+        if !user_id.key? :id || !current_user
+          bozo_message
+          return
+        end
+      end
+
+      def current_user
+        User.find_by_id user_id[:id]
       end
 
       def topping_params
@@ -39,6 +52,10 @@ module Api
 
       def vip_flag
         params.permit(:vip)
+      end
+
+      def bozo_message
+        render json: {error: 'ya bozo'}, status: 403
       end
 
     end
