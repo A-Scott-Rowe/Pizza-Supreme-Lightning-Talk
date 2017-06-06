@@ -15,4 +15,3 @@ class Topping < ApplicationRecord
     roles << :premium unless extra_cost.zero? || extra_cost.nil?
   end
 end
-›

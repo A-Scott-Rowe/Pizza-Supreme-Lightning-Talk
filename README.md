@@ -1,24 +1,22 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
 
-Things you may want to cover:
+Example app for ruby lightning talk about role based permssions
 
-* Ruby version
+## Setup
 
-* System dependencies
+Simple...
 
-* Configuration
+`bundle install`
 
-* Database creation
+`rails db:migrate`
 
-* Database initialization
+## Gems
 
-* How to run the test suite
+### Role Model
 
-* Services (job queues, cache servers, search engines, etc.)
+https://github.com/martinrehfeld/role_model
 
-* Deployment instructions
+### Cancancan
 
-* ...
+https://github.com/CanCanCommunity/cancancan
